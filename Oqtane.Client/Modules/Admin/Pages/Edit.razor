@@ -32,7 +32,7 @@
                                 <div class="col-sm-9">
                                         <select id="parent" class="form-select" value="@_parentid" @onchange="(e => ParentChanged(e))" required>
                                             <option value="-1">&lt;@Localizer["SiteRoot"]&gt;</option>
-                                            @foreach (Page page in _pages.Where(p => !p.IsDeleted))
+                                            @foreach (Page page in _pages.Where(p => !p.IsDeleted && p.ParentId == null))
                                             {
                                                 if (UserSecurity.IsAuthorized(PageState.User, PermissionNames.View, page.PermissionList) && page.PageId != _pageId)
                                                 {
